@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'online-course-platform' title`, () => {
+  it(`should have the 'online-course-portal' title`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('online-course-platform');
+    expect(app.title).toEqual('online-course-portal');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, online-course-platform');
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, online-course-portal');
   });
 });
