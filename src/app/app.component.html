@@ -25,10 +25,10 @@
               }
               @else{
                 <li class="nav-item">
-                    <a class="nav-link" (click)="openModal()">{{loggedUserData.emailId}}</a>
+                    <a class="nav-link" [routerLink]="['/user-profile']">{{loggedUserData.userName}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-danger" (click)="onlogoff()">LogOut</a>
+                    <a class="nav-link btn-danger cursor-pointer" (click)="onlogoff()">LogOut</a>
                 </li> 
               }
           </ul>

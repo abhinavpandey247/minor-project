@@ -5,10 +5,11 @@ import { sign } from 'crypto';
 import { IApiResponse, Icourse, IcourseVideos, IEnrollment, User } from '../../model/master.model';
 import { SlicePipe } from '@angular/common';
 import { StorageService } from '../../services/storage.service';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [SlicePipe],
+  imports: [SlicePipe,RouterLink,RouterOutlet],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })

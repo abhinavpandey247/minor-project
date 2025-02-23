@@ -7,10 +7,10 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-course-details',
   imports: [CommonModule],
-  templateUrl: './course-details.component.html',
-  styleUrl: './course-details.component.css'
+  templateUrl: './course-specification.component.html',
+  styleUrl: './course-specification.component.css'
 })
-export class CourseDetailsComponent implements OnInit {
+export class CourseSpecificationComponent implements OnInit {
   course: Icourse | undefined;
   constructor(
     private route: ActivatedRoute,

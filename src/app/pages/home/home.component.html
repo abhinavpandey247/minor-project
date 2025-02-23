@@ -48,7 +48,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{item.courseName}}</h5>
                                     <p class="card-text" [title]="item.courseDescription">{{item.courseDescription | slice:0:100}}...</p>
-                                    <a (click)="openModal(item.courseId)" class="btn btn-primary">View Videos</a> 
+                                    <a [routerLink]="['/course-specification', item.courseId]" class="btn btn-primary">Details</a>
                                     <a (click)="onEnroll(item.courseId)" class="btn btn-warning text-end">Enroll</a>
                                 </div>
                             </div>
@@ -165,34 +165,4 @@
 
 
 
-<!-- Modal Poppup -->
-
-<div class="modal" #courseModal>
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content ">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Course Videos</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-               <div class="row">
-                @for (item of courseVideos;track $index){
-                    <div class="col-3">
-                        <div class="card">
-                            <!-- <img src="item." class="card-img-top" alt="Trending Course 3"> -->
-                            <div class="card-body">
-                                <h6 class="card-title">{{item.videoTitle}}</h6>
-                                  
-                            </div>
-                        </div>  
-                    </div>
-                }
-               </div>
-            </div> 
-        </div>
-    </div>
-</div>
+<router-outlet></router-outlet>
