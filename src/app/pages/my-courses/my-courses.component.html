@@ -1,1 +1,80 @@
-<p>my-courses works!</p>
+ <!-- Hero Section -->
+ <section class="hero-section text-center py-5">
+    <div class="container">
+        <h1 class="text-center">Explore Top Notch Courses</h1>
+        <p class="text-center">Explore and enroll in our video courses to enhance your skills.</p>
+        <a href="#courses" class="btn btn-light w-25 mx-auto d-block">Explore</a> 
+       
+     
+    </div>
+</section>
+<div class="container-fluid">
+    
+    <div class="row bg-black py-3">
+        <!-- Courses Section (Left Side) -->
+        
+        <div class="col-lg-12">
+            <section id="courses" class="main-section">
+                <h2 class="text-center">Courses Catalogue
+                </h2>
+                <div class="col-12 ms-4 ps-0">
+                    <label class="mt-5  fs-5 fw-bold ">Search By:</label> &nbsp;&nbsp;
+                    <input type="text" placeholder="Search By  Course Name" class="  mt-1 mx-auto form-control 
+                            w-25 d-inline-block border-2 border-dark" [(ngModel)]=course (input)="filterRecords()">
+                   <label class="ms-5 fs-5 fw-bold">&nbsp;&nbsp;FILTER(<fa-icon [icon] = "filter"></fa-icon>):</label>
+                   &nbsp;&nbsp;
+                   <select class="mx-auto p-2 d-inline-block ms-1 border-2 border-dark" style="width: 300px;" [(ngModel)]="selecteditem"
+                      (change)="filterRecords()">
+                      <option value="">Filter By Rating</option>
+                      <option value="1">Rating 1</option>
+                      <option value="1.5">Rating 1.5</option>
+                      <option value="2">Rating 2</option>
+                      <option value="2.5">Rating 2.5</option>
+                      <option value="3">Rating 3</option>
+                      <option value="3.5">Rating 3.5</option>
+                      <option value="4">rating 4</option>
+                      <option value="4.5">Rating 4.5</option>
+                      <option value="5">Rating 5</option>
+                            
+                 </select>
+                       
+                </div>
+               
+                <div class="row courses_card mt-5">
+                  
+                    <div class="card mycard px-0 mb-4" style="width: 18rem;" *ngFor="let c of searchedCourses">
+                        <img [src]="c.image" class="card-img-top" width="100%" height="40%" alt="...">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ c.title | uppercase }}</h5>
+                          <app-rating [rating]="c.rating"></app-rating>
+                       
+                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                          <a href="#" class="btn btn-primary me-3">View Course</a>
+                          <a href="#" class="btn btn-primary">Enroll</a>
+                          
+                        </div>
+                        
+                    </div>
+                    
+                    <div *ngIf="searchedCourses.length === 0">
+                        <p class="text-center text-danger fs-4 text-uppercase">no  matching records found</p>
+
+                    </div>
+                   
+                </div>
+              
+               
+            
+            
+            </section>
+        </div>
+
+    </div>
+</div>
+<!-- Footer Section -->
+
+<footer class="text-center px-0 mt-2 py-4">
+    <div class="container-fluid">
+        <p>&copy; 2024 CourseHub. All rights reserved.</p>
+    </div>
+</footer>

@@ -1,0 +1,13 @@
+.crop{
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.gold{
+    cursor: pointer;
+    color: gold;
+}
+.red{
+    cursor: pointer;
+    color:red;
+}

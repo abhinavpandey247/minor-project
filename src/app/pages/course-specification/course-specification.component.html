@@ -1,0 +1,14 @@
+<div class="container">
+<div *ngIf="course" class="data">
+    <h1>{{ course.courseName }}</h1>
+    <img [src]="course.thumbnailUrl" alt="{{ course.courseName }}">
+    <p>{{ course.courseDescription }}</p>
+    <ul>
+        <li>Course ID:{{course.courseId}}</li>
+        <li>Course Date: {{ course.courseDate }}</li>    
+        <li>Total Hours: {{ course.totalHours }}</li>
+        <li>Total Videos: {{ course.totalVideos }}</li>
+        <li></li>
+    </ul>
+    </div>
+</div>

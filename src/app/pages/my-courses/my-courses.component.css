@@ -1,0 +1,19 @@
+.courses_card{
+    display: flex;
+    justify-content: space-evenly;
+}
+select{
+    border: 1px solid white;
+    border-radius: 6px;
+}
+.mycard{
+    box-shadow:0 4px 8px 0 rgb(0,0,0,0.2) ;
+
+}
+/* .crop{
+    white-space: nowrap;
+    overflow: hidden;
+}
+.myrating{
+   color: golden;
+}  */

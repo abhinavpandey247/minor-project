@@ -2,8 +2,9 @@ import { Component,ElementRef, inject, OnInit, signal, ViewChild } from '@angula
 import { MasterService } from '../../services/master.service';
 import { error } from 'console';
 import { sign } from 'crypto';
-import { IApiResponse, Icourse, IcourseVideos } from '../../model/master.model';
+import { IApiResponse, Icourse, IcourseVideos, IEnrollment, User } from '../../model/master.model';
 import { SlicePipe } from '@angular/common';
+import { StorageService } from '../../services/storage.service';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +16,38 @@ export class HomeComponent implements OnInit{
   masterSrv=inject(MasterService)
   courseList=signal<Icourse[]>([])
   courseVideos:IcourseVideos[]=[]
+  storageService = inject(StorageService);
   @ViewChild('courseModal') modal: ElementRef | undefined;
+
+  loggedUserData:User=new User;
   ngOnInit(): void {
+        const localData = this.storageService.getItem('learningUser');
+        if (localData != null) {
+          const parseData = JSON.parse(localData);
+          this.loggedUserData = parseData;
+        }
     this.loadCourses();
+  }
+  onEnroll(courseId:number){
+    if(this.loggedUserData.userId==0){
+      alert("Please Login First To Enroll");
+    }
+    else{
+      const enrolObj:IEnrollment={
+        courseId:courseId,
+        enrolledDate:new Date(),
+        enrollmentId:0,
+        userId:this.loggedUserData.userId,
+        isCompleted:false
+      };
+      this.masterSrv.onEnrollment(enrolObj).subscribe((res: IApiResponse) => {
+        if (res.result) {
+          alert('Enrollment Success');
+        } else {
+          alert(res.message);
+        }
+      });
+    }
   }
   openModal(courseId:number){
     if(this.modal){

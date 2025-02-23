@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg fixed-top ">
   <div class="container">
       <a class="navbar-brand" href="#">CourseHub</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -8,17 +8,104 @@
       <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                  <a class="nav-link" href="#courses">Courses</a>
+                  <a class="nav-link" [routerLink]="['/my-courses']">Courses</a>
               </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#register" data-bs-toggle="modal"
-                      data-bs-target="#myModal">Register</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="#register" data-bs-toggle="modal" data-bs-target="#myModal">Login</a>
-              </li>
+              @if(loggedUserData.userId!=0){
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/user-courses']">My Courses</a>
+                </li>
+              }
+              @if(loggedUserData.userId==0){
+                  <li class="nav-item">
+                      <a class="nav-link" (click)="openModal()">Register</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" (click)="openModal()">Login</a>
+                  </li>
+              }
+              @else{
+                <li class="nav-item">
+                    <a class="nav-link" (click)="openModal()">{{loggedUserData.emailId}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-danger" (click)="onlogoff()">LogOut</a>
+                </li> 
+              }
           </ul>
       </div>
   </div>
 </nav>
 <router-outlet></router-outlet>
+
+
+<div class="modal" id="myModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="btn-close" (click)="closeModal()"></button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="btn-group">
+                            <button type="button" [class]="isLoginFormVisible? 'btn btn-primary':'btn btn-success' " (click)="toggleForm(false)">Register</button>
+                            <button type="button" [class]="!isLoginFormVisible? 'btn btn-primary':'btn btn-success' " (click)="toggleForm(true)">Login</button>
+                        </div>
+                    </div>
+                </div>
+                
+                @if(isLoginFormVisible){
+                    <!-- Login Section (Just a placeholder for now) -->
+                    <section id="login" class="py-1 bg-light">
+                        <div class="container">
+                            <h2 class="text-center">Login to Your Account</h2>
+                            <form action="#" method="post" class="w-100 mx-auto">
+                                <div class="mb-3">
+                                    <label for="emailLogin" class="form-label">Email</label>
+                                    <input type="text" name="userName" [(ngModel)]="loginObj.userName" class="form-control" id="emailLogin" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" name="password" [(ngModel)]="loginObj.password" class="form-control" id="password" required>
+                                </div>
+                                <button type="button" (click)="onLogin()" class="btn btn-primary">Login</button>
+                            </form>
+                        </div>
+                    </section>
+                }@else{
+                    <!-- Registration Section -->
+                <section id="register" class="py-1 bg-light">
+                    <div class="container">
+                        <h2 class="text-center">Register for a Course</h2>
+                        <form action="#" method="post" class="w-100 mx-auto">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Full Name</label>
+                                <input type="text" name="fullName" [(ngModel)]="userRegisterObj.fullName" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="emailId" [(ngModel)]="userRegisterObj.emailId" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">User Name</label>
+                                <input type="text" name="userName" [(ngModel)]="userRegisterObj.userName" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Password</label>
+                                <input type="text" name="password" [(ngModel)]="userRegisterObj.password" class="form-control" id="email" required>
+                            </div>
+                             
+                            <button type="button" (click)="onRegister()" class="btn btn-primary">Register Now</button>
+                        </form>
+                    </div>
+                </section>
+                }
+            </div> 
+        </div>
+    </div>
+</div>
