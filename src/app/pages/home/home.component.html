@@ -44,7 +44,7 @@
                     @for (item of courseList(); track $index){
                         <div class="col-md-4">
                             <div class="card mb-3">
-                                <img [src]="item.thumbnailUrl" class="card-img-top" alt="Course 1">
+                                <img id="thumbnailImg" [src]="item.thumbnailUrl" class="card-img-top" alt="Course 1">
                                 <div class="card-body">
                                     <h5 class="card-title">{{item.courseName}}</h5>
                                     <p class="card-text" [title]="item.courseDescription">{{item.courseDescription | slice:0:100}}...</p>
