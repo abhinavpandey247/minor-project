@@ -1,5 +1,5 @@
  <!-- Hero Section -->
- <section class="hero-section text-center py-5">
+ <section class="hero-section text-center py-5 mt-5">
     <div class="container">
         <h1>Welcome to CourseHub</h1>
         <p>Explore and enroll in our video courses to enhance your skills.</p>
@@ -17,13 +17,13 @@
                 <img src="../../../assets/about.jpg" style="width:100%; height:100%; border-radius: 6px;">
             </div>
             <div class="col-8 main-section px-5 py-3">
-                    CourseHub is an e-learning platform developed and designed in order to 
+                    CourseH ub is an e-learning platform developed and designed in order to 
                     meet the quench of in demand industry ready courses. It is a one stop 
                     platform which helps learners to effectively engage with professsional mentors 
                     and learn top notch courses under their guidance.
                     <br><br><br>
                     It offers rich set of course library offering vivid courses connecting horizons for fields like 
-                    Web development , App development, MERN stack, Angualar development and Full Stack development
+                    Web development , App development, MERN stack & Angular development
 
                     <button class="btn btn-secondary text-white text-center  mt-5" style="margin-left: 160px;">Join Us in This Amazing Journey Of Learning</button>
             </div>
@@ -47,7 +47,7 @@
                                 <img id="thumbnailImg" [src]="item.thumbnailUrl" class="card-img-top" alt="Course 1">
                                 <div class="card-body">
                                     <h5 class="card-title">{{item.courseName}}</h5>
-                                    <p class="card-text" [title]="item.courseDescription">{{item.courseDescription | slice:0:100}}...</p>
+                                    <p class="card-text" [title]="item.courseDescription">{{item.courseDescription | slice:0:75}}...</p>
                                     <a [routerLink]="['/course-specification', item.courseId]" class="btn btn-primary">Details</a>
                                     <a (click)="onEnroll(item.courseId)" class="btn btn-warning text-end">Enroll</a>
                                 </div>
@@ -69,7 +69,7 @@
                         <img src="https://i.ytimg.com/vi/FDIj5Vklnlc/maxresdefault.jpg" class="card-img-top" alt="Trending Course 1">
                         <div class="card-body">
                             <h5 class="card-title">Full Stack Development</h5> 
-                            <a href="#course-details" class="btn btn-dark">Learn More</a>
+                            <!-- <a href="#course-details" class="btn btn-dark">Learn More</a> -->
                         </div>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
                         <img src="https://i.ytimg.com/vi/FDIj5Vklnlc/maxresdefault.jpg" class="card-img-top" alt="Trending Course 2">
                         <div class="card-body">
                             <h5 class="card-title">Advanced JavaScript</h5> 
-                            <a href="#course-details" class="btn btn-dark">Learn More</a>
+                            <!-- <a href="#course-details" class="btn btn-dark">Learn More</a> -->
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                         <img src="https://i.ytimg.com/vi/FDIj5Vklnlc/maxresdefault.jpg" class="card-img-top" alt="Trending Course 3">
                         <div class="card-body">
                             <h5 class="card-title">Machine Learning with Python</h5> 
-                            <a href="#course-details" class="btn btn-dark">Learn More</a>
+                            <!-- <a href="#course-details" class="btn btn-dark">Learn More</a> -->
                         </div>
                     </div>
                 </div>
@@ -154,6 +154,10 @@
       </div>
 </section>
 
+<!-- Feedback Button Section -->
+<div class="container my-5 text-center">
+    <button class="btn btn-info" (click)="openFeedbackModal()">Give Feedback</button>
+</div>
 
 
 <!-- Footer Section -->
@@ -163,6 +167,61 @@
     </div>
 </footer>
 
+
+<!-- Feedback Modal -->
+<div class="modal" id="feedbackModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Feedback Form</h4>
+                <button type="button" class="btn-close" (click)="closeFeedbackModal()"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form #feedbackForm="ngForm" (ngSubmit)="submitFeedback(feedbackForm)">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" [(ngModel)]="feedback.name" name="name" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" [(ngModel)]="feedback.email" name="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
+                        <div *ngIf="feedbackForm.submitted || feedbackForm.controls['email']?.dirty">
+                            <div *ngIf="!feedbackForm.controls['email']?.valid" class="text-danger">
+                                Valid email is required.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" [(ngModel)]="feedback.phone" name="phone" pattern="^[0-9]{10}$" required>
+                        <div class="form-text">Enter a 10-digit phone number.</div>
+                        <div *ngIf="feedbackForm.submitted || feedbackForm.controls['phone']?.dirty">
+                            <div *ngIf="!feedbackForm.controls['phone']?.valid" class="text-danger">
+                              Enter a valid 10-digit phone number.
+                            </div>
+                          </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="feedback" class="form-label">Feedback</label>
+                        <textarea class="form-control" id="feedback" [(ngModel)]="feedback.message" name="message" rows="3" required></textarea>
+                        <div *ngIf="feedbackForm.submitted || feedbackForm.controls['message']?.dirty">
+                            <div *ngIf="!feedbackForm.controls['message']?.valid" class="text-danger">
+                              Feedback message is required.
+                            </div>
+                          </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <router-outlet></router-outlet>
