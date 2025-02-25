@@ -9,6 +9,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import Razorpay from 'razorpay';
+import Swal from 'sweetalert2'
 
 // Define Razorpay interface
 interface RazorpayOptions {
@@ -67,7 +68,7 @@ export class HomeComponent implements OnInit{
   
   onEnroll(courseId:number){
     if(this.loggedUserData.userId==0){
-      alert("Please Login First To Enroll");
+      Swal.fire({   title: "Please Login First To Enroll",   text: "You clicked the button!",   icon: "warning"});
     }
     else{
       
@@ -82,7 +83,8 @@ export class HomeComponent implements OnInit{
         if (res.result) {
           this.openPaymentModal(courseId);
         } else {
-          alert(res.message);
+          Swal.fire({   title: res.message,   text: "You clicked the button!",   icon: "warning"});
+          alert();
         }
       });
     }

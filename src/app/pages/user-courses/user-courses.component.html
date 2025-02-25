@@ -15,6 +15,7 @@
                                     <h5 class="card-title">{{item.courseName}}</h5>
                                     <p class="card-text" [title]="item.courseDescription">{{item.courseDescription | slice:0:100}}...</p>
                                     <a (click)="navigatingToCourse(item.courseId)" class="btn btn-primary">Start Learning</a> 
+                                    <a (click)="deleteEnrollmentByEnrollmentId(item.enrollmentId)" class="btn btn-primary">Unenroll</a> 
                                 </div> 
                             </div>
                         </div>

@@ -5,6 +5,7 @@ import { IApiResponse, Login, User } from './model/master.model';
 import { MasterService } from './services/master.service';
 import { inject } from '@angular/core';
 import { StorageService } from './services/storage.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-root',
@@ -58,10 +59,11 @@ export class AppComponent {
   onRegister() {
     this.masterSrv.addNewUser(this.userRegisterObj).subscribe((res: IApiResponse) => {
       if (res.result) {
-        alert('User Registered');
+        Swal.fire({   title: "User Registered!",   text: "You clicked the button!",   icon: "success"});
         this.closeModal();
       } else {
-        alert(res.message);
+        Swal.fire({   title: res.message,   text: "You clicked the button!",   icon: "success"});
+       
       }
     });
   }

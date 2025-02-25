@@ -27,4 +27,7 @@ export class MasterService {
   getEnrolledCourseByUserId(id:number):Observable<IApiResponse>{
     return this.http.get<IApiResponse>(`${this.apiUrl}GetEnrolledCourseByUserId?userId=${id}`)
   }
+  deleteEnrollment(id:number):Observable<IApiResponse>{
+    return this.http.delete<IApiResponse>(`${this.apiUrl}DeleteEnrollment?enrollmentId=${id}`)
+  }
 }

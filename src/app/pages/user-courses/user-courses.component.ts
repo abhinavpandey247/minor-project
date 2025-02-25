@@ -34,7 +34,15 @@ export class UserCoursesComponent implements OnInit {
     navigatingToCourse(id:number){
       this.router.navigate(['coursedetail',id])
     }
-
+    deleteEnrollmentByEnrollmentId(enrollmentId: number) {
+      const confirmed = confirm('Are you sure you want to delete this enrollment?');
+      if (confirmed) {
+      this.masterSrv.deleteEnrollment(enrollmentId).subscribe((res: IApiResponse) => {
+        // Handle the response, e.g., refresh the list of courses
+        this.getEnrollmentByUserId();
+      });
+    }
+    }
     getEnrollmentByUserId(){
       this.masterSrv.getEnrolledCourseByUserId(this.loggedUserData.userId).subscribe((res:IApiResponse)=>{
         this.courseList=res.data;
