@@ -2,44 +2,45 @@
  <section class="hero-section text-center py-5 mt-5">
     <div class="container">
         <h1>Welcome to CourseHub</h1>
-        <p>Explore and enroll in our video courses to enhance your skills.</p>
-        <a href="#courses" class="btn btn-light">Explore Courses</a>
+        <p> Learn skills that matter, Achieve goals that Inspire </p>
+        <a href="#courses" class="custom-btn">Explore Courses</a>
     </div>
 </section>
-
-
+ 
+ 
 <!--About section-->
-<section class="my-5">
-    <div class="container-fluid">
-        <h2 class="text-center">About Us</h2>
+<section class="about my-0">
+    <div class="container-fluid my-5">
+ 
+        <h2 class="text-center about_us" style="font-family: 'Roboto Slab', serif; font-size: 37px; font-weight: bold;">About Us</h2>
         <div class="row px-5">
             <div class="col-4">
                 <img src="../../../assets/about.jpg" style="width:100%; height:100%; border-radius: 6px;">
             </div>
-            <div class="col-8 main-section px-5 py-3">
-                    CourseH ub is an e-learning platform developed and designed in order to 
-                    meet the quench of in demand industry ready courses. It is a one stop 
-                    platform which helps learners to effectively engage with professsional mentors 
+            <div class="col-8 main-section px-5 py-3" style="font-family: 'Lora', serif;font-size: larger;">
+                    CourseHub is an e-learning platform developed and designed in order to
+                    meet the quench of in demand industry ready courses. It is a one stop
+                    platform which helps learners to effectively engage with professsional mentors
                     and learn top notch courses under their guidance.
-                    <br><br><br>
-                    It offers rich set of course library offering vivid courses connecting horizons for fields like 
+                    <br>
+                    It offers rich set of course library offering vivid courses connecting horizons for fields like
                     Web development , App development, MERN stack & Angular development
-
-                    <button class="btn btn-secondary text-white text-center  mt-5" style="margin-left: 160px;">Join Us in This Amazing Journey Of Learning</button>
+                    <br><br>
+                    <p class="text-center" style="font-weight: bold;">Join Us in This Amazing Journey Of Learning!</p>
+                    <!--button class="btn btn-secondary text-white text-center  mt-5" style="margin-left: 120px;">Join Us in This Amazing Journey Of Learning</button-->
             </div>
-
         </div>
-
     </div>
 </section>
-
+ 
 <!-- Main Section with Courses and Trending Courses -->
-<div class="container my-5">
-    <div class="row">
+<div class="container-fluid my-0" style="border-bottom: 2px solid black;" >
+    <div class="row" >
         <!-- Courses Section (Left Side) -->
-        <div class="col-lg-9">
+        <div class="col-lg-9" >
             <section id="courses" class="main-section">
-                <h2 class="text-center">Our Courses</h2>
+                <h2 class="text-center courses" style="font-family: 'Roboto Slab', serif; font-size: 37px; font-weight: bold;">Courses</h2>
+                <br>
                 <div class="row">
                     @for (item of courseList(); track $index){
                         <div class="col-md-4">
@@ -54,39 +55,39 @@
                             </div>
                         </div>
                     }
-                    
+                   
                    
                 </div>
             </section>
         </div>
-
+ 
         <!-- Trending Courses Section (Right Side) -->
-        <div class="col-lg-3">
+        <div class="col-lg-3 my-5">
             <section id="trending" class="trending-section">
-                <h2 class="text-center">Trending Courses</h2>
+                <h2 class="text-center"style="font-family: 'Roboto Slab', serif; font-size: 30px; font-weight: bold;">Trending Courses</h2>
                 <div class="mb-3">
                     <div class="card">
-                        <img src="https://i.ytimg.com/vi/FDIj5Vklnlc/maxresdefault.jpg" class="card-img-top" alt="Trending Course 1">
+                        <img src="https://blog.nexotips.com/wp-content/uploads/2024/03/From-Front-End-Finesse-to-Back-End-Brilliance_-Journey-of-a-Full-Stack-Developer-2024-1.png" class="card-img-top" alt="Trending Course 1">
                         <div class="card-body">
-                            <h5 class="card-title">Full Stack Development</h5> 
+                            <h5 class="card-title">Full Stack Development</h5>
                             <!-- <a href="#course-details" class="btn btn-dark">Learn More</a> -->
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="card">
-                        <img src="https://i.ytimg.com/vi/FDIj5Vklnlc/maxresdefault.jpg" class="card-img-top" alt="Trending Course 2">
+                        <img src="https://i.ytimg.com/vi/xc3a_CJhjCc/maxresdefault.jpg" class="card-img-top" alt="Trending Course 2">
                         <div class="card-body">
-                            <h5 class="card-title">Advanced JavaScript</h5> 
+                            <h5 class="card-title">Advanced JavaScript</h5>
                             <!-- <a href="#course-details" class="btn btn-dark">Learn More</a> -->
                         </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="card">
-                        <img src="https://i.ytimg.com/vi/FDIj5Vklnlc/maxresdefault.jpg" class="card-img-top" alt="Trending Course 3">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20210629203724/MachineLearningwithPythonmin.png" class="card-img-top" alt="Trending Course 3">
                         <div class="card-body">
-                            <h5 class="card-title">Machine Learning with Python</h5> 
+                            <h5 class="card-title">Machine Learning with Python</h5>
                             <!-- <a href="#course-details" class="btn btn-dark">Learn More</a> -->
                         </div>
                     </div>
@@ -95,13 +96,11 @@
         </div>
     </div>
 </div>
-
-
+ 
 
 <!-- testimonials section -->
 <section class="container main-section mb-3 px-5">
-    <h2 class="text-center">Our Happy Learners</h2>
-    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <h2 class="text-center" style="font-family: 'Roboto Slab', serif; font-size: 37px; font-weight: bold;">Our Happy Learners</h2>    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
 
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -156,7 +155,7 @@
 
 <!-- Feedback Button Section -->
 <div class="container my-5 text-center">
-    <button class="btn btn-info" (click)="openFeedbackModal()">Give Feedback</button>
+    <button class="feedback" (click)="openFeedbackModal()">Give Feedback</button>
 </div>
 
 
@@ -166,8 +165,6 @@
         <p>&copy; 2024 CourseHub. All rights reserved.</p>
     </div>
 </footer>
-
-
 <!-- Feedback Modal -->
 <div class="modal" id="feedbackModal">
     <div class="modal-dialog">
@@ -177,7 +174,7 @@
                 <h4 class="modal-title">Feedback Form</h4>
                 <button type="button" class="btn-close" (click)="closeFeedbackModal()"></button>
             </div>
-
+ 
             <!-- Modal Body -->
             <div class="modal-body">
                 <form #feedbackForm="ngForm" (ngSubmit)="submitFeedback(feedbackForm)">
@@ -185,7 +182,6 @@
                         <label for="name" class="form-label">Full Name</label>
                         <input type="text" class="form-control" id="name" [(ngModel)]="feedback.name" name="name" required>
                     </div>
-                    
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="email" class="form-control" id="email" [(ngModel)]="feedback.email" name="email" required pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$">
@@ -195,7 +191,7 @@
                             </div>
                         </div>
                     </div>
-                    
+                   
                     <div class="mb-3">
                         <label for="phone" class="form-label">Phone Number</label>
                         <input type="text" class="form-control" id="phone" [(ngModel)]="feedback.phone" name="phone" pattern="^[0-9]{10}$" required>
@@ -206,7 +202,16 @@
                             </div>
                           </div>
                     </div>
-                    
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Rating</label>
+                        <div class="star-rating">
+                            <i *ngFor="let star of stars; let i = index"
+                               class="fa"
+                               [ngClass]="i < feedback.rating ? 'fa-star' : 'fa-star-o'"
+                               [style.color]="getStarColor(i)"
+                               (click)="rate(i + 1)"></i>
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="feedback" class="form-label">Feedback</label>
                         <textarea class="form-control" id="feedback" [(ngModel)]="feedback.message" name="message" rows="3" required></textarea>
@@ -222,6 +227,5 @@
         </div>
     </div>
 </div>
-
-
+ 
 <router-outlet></router-outlet>

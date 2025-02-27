@@ -36,12 +36,36 @@ export class AppComponent {
   toggleForm(val: boolean) {
     this.isLoginFormVisible = val;
   }
+  
 
   onlogoff() {
-    this.loggedUserData = new User();
-    this.storageService.removeItem('learningUser');
+    Swal.fire({
+      title: 'Are you sure you want to log off?',
+      text: 'You will need to log in again to access your account.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, log off',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Perform the logoff action if the user confirms
+        this.loggedUserData = new User();
+        this.storageService.removeItem('learningUser');
+        console.log('User logged off successfully.');
+      } else {
+        // User canceled the logoff
+        console.log('User canceled logoff.');
+      }
+    });
   }
 
+  capitalizeFirstLetter(value: string): string {
+    if (!value) return value;
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  }
+  
+
+  
   openModal() {
     const modal = document.getElementById('myModal');
     if (modal) {
@@ -62,7 +86,7 @@ export class AppComponent {
         Swal.fire({   title: "User Registered!",   text: "You clicked the button!",   icon: "success"});
         this.closeModal();
       } else {
-        Swal.fire({   title: res.message,   text: "You clicked the button!",   icon: "success"});
+        Swal.fire({   title: res.message,   text: "You clicked the button!",   icon: "warning"});
        
       }
     });
@@ -71,12 +95,17 @@ export class AppComponent {
   onLogin() {
     this.masterSrv.onLogin(this.loginObj).subscribe((res: IApiResponse) => {
       if (res.result) {
-        alert('User Logged Success');
+        
+        // alert('User Logged Success');
+        Swal.fire({   title: res.message,   text: "User Logged Success!",   icon: "success"});
+
         this.storageService.setItem('learningUser', JSON.stringify(res.data));
         this.loggedUserData = res.data;
         this.closeModal();
       } else {
-        alert(res.message);
+        // alert(res.message);
+        Swal.fire({   title: res.message,   text: "Please complete",   icon: "warning"});
+
       }
     });
   }

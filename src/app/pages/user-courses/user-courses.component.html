@@ -1,11 +1,12 @@
 
 <!-- Main Section with Courses and Trending Courses -->
-<div class="container my-5">
+<div class="container mt-5">
     <div class="row">
         <!-- Courses Section (Left Side) -->
         <div class="col-lg-9">
             <section id="courses" class="main-section">
-                <h2 class="text-center">Our Courses</h2>
+                <h2  class="text-center" style="font-family: 'Roboto Slab', serif; font-size: 37px; font-weight: bold;" >Our Courses</h2>    
+                <br>            
                 <div class="row">
                     @for (item of courseList; track $index){
                         <div class="col-md-4">
@@ -14,8 +15,8 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{item.courseName}}</h5>
                                     <p class="card-text" [title]="item.courseDescription">{{item.courseDescription | slice:0:100}}...</p>
-                                    <a (click)="navigatingToCourse(item.courseId)" class="btn btn-primary">Start Learning</a> 
-                                    <a (click)="deleteEnrollmentByEnrollmentId(item.enrollmentId)" class="btn btn-primary">Unenroll</a> 
+                                    <a (click)="navigatingToCourse(item.courseId)" class="btn btn-primary">Start Course</a> 
+                                    <a (click)="deleteEnrollmentByEnrollmentId(item.enrollmentId)" class="btn btn-primary">UnEnroll</a> 
                                 </div> 
                             </div>
                         </div>

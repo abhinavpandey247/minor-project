@@ -1,87 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Open+Sans:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@700&family=Raleway:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 .navbar {
-
     background-color: #313e4a;
-
 }
- 
-.navbar .nav-link,
-
-.navbar-brand {
-
+.custom-btn{
+    display: inline-block;
+    background: #313e4a;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3 ease-in-out;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+.custom-btn:hover{
+    background: #313e4a;
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+.navbar .nav-link,.navbar-brand {
     color: white !important;
-
 }
  
 .navbar .btn {
-
     color: #1a73e8 !important;
-
 }
  
 .btn-primary {
-
     background-color: #34495e !important;
-
     border: #34495e !important;
-
 }
  
 .hero-section {
-
-    background-color: #1a73e8;
-
-    color: white;
-
-    padding: 50px 0;
-
+    background: #89a5bfd1;
+    color:black;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: x-large;
+    margin-bottom: 0;
+   
 }
  
+ 
 .main-section {
-
     background-color: white;
-
     border-radius: 8px;
-
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
     padding: 20px;
-
 }
  
 .trending-section {
-
-    background-color: #ffcc00;
-
+    background-color: #f6cf34;
     padding: 20px;
-
     border-radius: 8px;
-
 }
  
 footer {
-
-    background-color: #34495e;
-
+    background-color: #313e4a;
     color: white;
-
 }
- 
-.card .btn {
-
-    margin-right: 10px; /* Adds a gap between the buttons */
-
-}
- 
-/* Small pop-up effect for course card */
-
-.card:hover {
-
-    transform: scale(1.05);
-
-    transition: transform 0.3s ease-in-out;
-
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-}
-
  

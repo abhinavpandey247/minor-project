@@ -1,7 +1,6 @@
 import { Component,ElementRef, inject, OnInit, signal, ViewChild } from '@angular/core';
 import { MasterService } from '../../services/master.service';
-import { error } from 'console';
-import { sign } from 'crypto';
+
 import { IApiResponse, Icourse, IcourseVideos, IEnrollment, User } from '../../model/master.model';
 import { SlicePipe, CommonModule} from '@angular/common';
 import { StorageService } from '../../services/storage.service';
@@ -47,8 +46,22 @@ export class HomeComponent implements OnInit{
     name: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    rating: 0
   };
+  stars: number[] = [1, 2, 3, 4, 5];
+  starColors: string[] = ['red', 'orange', 'yellow', 'lightgreen', 'green'];
+ 
+  rate(star: number) {
+    this.feedback.rating = star;
+  }
+  getStarColor(index: number): string {
+    if (index < this.feedback.rating) {
+      return this.starColors[this.feedback.rating - 1];
+    }
+    return 'gray';
+  }
+ 
   masterSrv=inject(MasterService)
   courseList=signal<Icourse[]>([])
   courseVideos:IcourseVideos[]=[]
@@ -84,7 +97,7 @@ export class HomeComponent implements OnInit{
           this.openPaymentModal(courseId);
         } else {
           Swal.fire({   title: res.message,   text: "You clicked the button!",   icon: "warning"});
-          alert();
+          
         }
       });
     }
@@ -97,15 +110,15 @@ export class HomeComponent implements OnInit{
     }
 
     const options: RazorpayOptions = {
-      key: 'rzp_test_vjLf04gKoeGSUr',  // Replace with your Razorpay test key ID
-      amount: 50000,  // Amount in paise (50000 paise = INR 500)
+      key: 'rzp_test_vjLf04gKoeGSUr', 
+      amount: 50000, 
       currency: 'INR',
       name: 'CourseHub',
       description: 'Course Enrollment',
       image: 'https://example.com/your_logo',
-      order_id: '',  // Pass the order ID if you have one
+      order_id: '',  
       handler: (response: any) => {
-        alert('Payment Successful! Enrollment Complete.');
+        Swal.fire({   title: response.message,   text: "Payment Succesfull!",   icon: "success"});
         this.closePaymentModal();
       },
       prefill: {
@@ -121,8 +134,8 @@ export class HomeComponent implements OnInit{
       }
     };
  
-    const rzp1 = new (window as any).Razorpay(options); // Initialize Razorpay with options
-    rzp1.open(); // Open Razorpay payment interface
+    const rzp1 = new (window as any).Razorpay(options); 
+    rzp1.open(); 
   }
 
   closePaymentModal() {
@@ -164,16 +177,20 @@ export class HomeComponent implements OnInit{
       const feedbackList = JSON.parse(localStorage.getItem('feedbackList') || '[]');
         feedbackList.push(this.feedback);
         localStorage.setItem('feedbackList', JSON.stringify(feedbackList));
-      alert('Feedback Submitted Successfully!');
+   
+      Swal.fire({   title : "Feedback",   text: "Feedback Submitted Successfully",   icon: "success"});
+
       this.closeFeedbackModal();
     } else {
-      alert('Please fill out all fields correctly.');
+      Swal.fire({   title: "Please complete",   text: "Please fill out all fields correctly",   icon: "warning"});
+
     }
     if (this.feedback.name && this.feedback.email && this.feedback.phone && this.feedback.message) {
-      alert('Feedback Submitted Successfully!');
+      Swal.fire({   title: "Submitted",   text: "Feedback Submitted Successfully!",   icon: "success"});
+
       this.closeFeedbackModal();
     } else {
-      alert('Please fill out all fields.');
+      Swal.fire({   title: "Please Complete",   text: "Please fill out all fields.",   icon: "warning"});
     }
   }
 

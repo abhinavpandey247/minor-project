@@ -1,9 +1,39 @@
+
+ 
 .cursor-pointer{
     cursor: pointer;
 }
+.logo{
+    width:40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+    vertical-align: middle;
+}
+.navbar-brand {
+    font-family: 'Lobster', cursive;
+    font-size: x-large;
+    margin: 0; /* Added to ensure there's no extra margin */
+}
+.nav-item a:hover{
+    font-weight: bolder;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-decoration: solid;
+ 
+}
+ 
 #loginButton{
     cursor: pointer;
 }
 #registerButton{
     cursor: pointer;
 }
+.nav-link
+{
+  font-style: italic;
+  font-family: 'Times New Roman';
+  font-size: large;
+}
+ 
+ 

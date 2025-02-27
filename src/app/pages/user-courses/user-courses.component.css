@@ -1,3 +1,64 @@
 #thumbnailImg{
     height: 200px;
 }
+
+#thumbnailImg{
+    height: 200px;
+}
+ 
+#thumbnailImg{
+    height: 200px;
+}
+
+/* Card Styling */
+.card {
+    border: 2px solid #313e4a ;
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s, box-shadow 0.3s; /* Smooth transition */
+    overflow: hidden; /* Ensure the content fits inside rounded corners */
+}
+ 
+.card img {
+    border-top-left-radius: 10px; /* Match the card's rounded corners */
+    border-top-right-radius: 10px; /* Match the card's rounded corners */
+}
+ 
+.card-body {
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(234 236 203);
+
+}
+ 
+.card-title {
+    font-family: 'Roboto Slab', serif; /* Use Roboto Slab font */
+    font-size: 20px; /* Adjust font size */
+    font-weight: bold; /* Bold text */
+    margin-bottom: 10px; /* Space between title and text */
+}
+ 
+.card-text {
+    font-family: 'Lora', serif; /* Use Lora font */
+    font-size: 16px; /* Adjust font size */
+    color: #555; /* Slightly darker text */
+}
+ 
+.card .btn {
+    margin: 10px 10px;
+    border: 1px solid black;
+}
+ 
+.card:hover {
+    transform: translateY(-10px); /* Slightly lift the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+}
+.carousel-inner h2{
+    font-size: x-large;
+    font-weight: bold;
+}
+.carousel-inner p{
+    font-size: larger;
+}
+
+ 

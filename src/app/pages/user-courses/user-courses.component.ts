@@ -5,7 +5,7 @@ import { MasterService } from '../../services/master.service';
 import { IApiResponse } from '../../model/master.model';
 import { SlicePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-user-courses',
   imports: [SlicePipe],
@@ -35,13 +35,25 @@ export class UserCoursesComponent implements OnInit {
       this.router.navigate(['coursedetail',id])
     }
     deleteEnrollmentByEnrollmentId(enrollmentId: number) {
-      const confirmed = confirm('Are you sure you want to delete this enrollment?');
-      if (confirmed) {
-      this.masterSrv.deleteEnrollment(enrollmentId).subscribe((res: IApiResponse) => {
-        // Handle the response, e.g., refresh the list of courses
-        this.getEnrollmentByUserId();
+      Swal.fire({
+        title: 'Are you sure you want to delete this enrollment?',
+        text: 'This action cannot be undone.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it',
+        cancelButtonText: 'Cancel'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Perform the delete action if the user confirms
+          this.masterSrv.deleteEnrollment(enrollmentId).subscribe((res: IApiResponse) => {
+            // Handle the response, e.g., refresh the list of courses
+            this.getEnrollmentByUserId();
+          });
+        } else {
+          // User canceled the deletion
+          console.log('User canceled the deletion.');
+        }
       });
-    }
     }
     getEnrollmentByUserId(){
       this.masterSrv.getEnrolledCourseByUserId(this.loggedUserData.userId).subscribe((res:IApiResponse)=>{

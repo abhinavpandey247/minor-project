@@ -1,6 +1,10 @@
 <nav class="navbar navbar-expand-lg fixed-top ">
-  <div class="container">
-      <a class="navbar-brand" href="#">CourseHub</a>
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="https://i.fbcd.co/products/resized/resized-750-500/ch-creative-letter-logo-design-2-95974e7111769d6c5648427daa9f0621eef462e2c511e7d33eafd5b4b46e0243.jpg"
+        alt="logo" class="logo">
+
+        CourseHub</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -25,7 +29,7 @@
               }
               @else{
                 <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/user-profile']">{{loggedUserData.userName}}</a>
+                    <a class="nav-link" [routerLink]="['/user-profile']">{{ capitalizeFirstLetter(loggedUserData.userName) }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link btn-danger cursor-pointer" (click)="onlogoff()">LogOut</a>
